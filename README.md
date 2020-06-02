@@ -13,6 +13,7 @@ The run script assumes there will be a properties file in the same diretory that
 The run script will not be checked in it needs the following properties and as this changes we will update here. 
 
 | Key 				| Value							| Description			|
+| ----------------------------- | ----------------------------------------------------- | ----------------------------- |
 | API_KEY			| Provided from twitter account.			| https://developer.twitter.com/en/docs/basics/authentication/oauth-1-0a |
 | API_SECRET_KEY		| Provided from twitter account. 			| https://developer.twitter.com/en/docs/basics/authentication/oauth-1-0a |
 | ACCESS_TOKEN			| Provided from twitter account.			| https://developer.twitter.com/en/docs/basics/authentication/oauth-1-0a |
