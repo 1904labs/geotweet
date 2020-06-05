@@ -1,33 +1,27 @@
 package com.geobentea.geotweet.data;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Tweet {
-    private long id;
+    private String id;
     private String text;
-    private String lang;
+    private String created_at;
     private User user;
+	private Place place;
+	private TweetGeo geo;
 
-    @SerializedName("retweet_count")
-    private int retweetCount;
-
-    @SerializedName("favorite_count")
-    private int favoriteCount;
-
-    public Tweet(long id, String text, String lang, User user, int retweetCount, int favoriteCount) {
-        this.id = id;
-        this.text = text;
-        this.lang = lang;
-        this.user = user;
-        this.retweetCount = retweetCount;
-        this.favoriteCount = favoriteCount;
+    public Tweet(String id, String text, TweetGeo geo, String created_at, Place place, User user) {
+        this.setId(id);
+        this.setText(text);
+		this.setGeo(geo);
+        this.setCreatedAt(created_at);
+		this.setPlace(place);
+        this.setUser(user);
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -39,12 +33,12 @@ public class Tweet {
         this.text = text;
     }
 
-    public String getLang() {
-        return lang;
+    public String getCreatedAt() {
+        return created_at;
     }
 
-    public void setLang(String lang) {
-        this.lang = lang;
+    public void setCreatedAt(String lang) {
+        this.created_at = lang;
     }
 
     public User getUser() {
@@ -55,31 +49,31 @@ public class Tweet {
         this.user = user;
     }
 
-    public int getRetweetCount() {
-        return retweetCount;
-    }
-
-    public void setRetweetCount(int retweetCount) {
-        this.retweetCount = retweetCount;
-    }
-
-    public int getFavoriteCount() {
-        return favoriteCount;
-    }
-
-    public void setFavoriteCount(int favoriteCount) {
-        this.favoriteCount = favoriteCount;
-    }
-
     @Override
     public String toString() {
         return "Tweet{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", lang='" + lang + '\'' +
+                ", geo='" + geo + '\'' +
+                ", created_at='" + created_at + '\'' +
+                ", place=" + place +
                 ", user=" + user +
-                ", retweetCount=" + retweetCount +
-                ", favoriteCount=" + favoriteCount +
                 '}';
     }
+
+	public Place getPlace() {
+		return place;
+	}
+
+	public void setPlace(Place place) {
+		this.place = place;
+	}
+
+	public TweetGeo getGeo() {
+		return geo;
+	}
+
+	public void setGeo(TweetGeo geo) {
+		this.geo = geo;
+	}
 }

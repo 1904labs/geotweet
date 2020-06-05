@@ -1,10 +1,10 @@
 package com.geobentea.geotweet.data;
 
-public class User {
+public class Place {
     private String name;
 	private BoundingBox bounding_box;
 
-    public User(String name, BoundingBox box) {
+    public Place(String name, BoundingBox box) {
         this.name = name;
 		this.setBoundingBox(box);
     }

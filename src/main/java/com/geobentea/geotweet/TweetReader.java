@@ -12,6 +12,8 @@ import com.google.common.collect.Lists;
 import com.twitter.hbc.ClientBuilder;
 import com.twitter.hbc.core.Client;
 import com.twitter.hbc.core.Constants;
+import com.twitter.hbc.core.endpoint.Location;
+import com.twitter.hbc.core.endpoint.Location.Coordinate;
 import com.twitter.hbc.core.endpoint.StatusesFilterEndpoint;
 import com.twitter.hbc.core.processor.StringDelimitedProcessor;
 import com.twitter.hbc.httpclient.auth.Authentication;
@@ -63,8 +65,12 @@ public class TweetReader {
 	    BlockingQueue<String> queue = new LinkedBlockingQueue<String>(10000);
 	    StatusesFilterEndpoint endpoint = new StatusesFilterEndpoint();
 	    // add some track terms
-	    endpoint.trackTerms(Lists.newArrayList("#covid"));
+	    endpoint.trackTerms(Lists.newArrayList("#weather", "#location", "#station"));
 
+	    Location missouri = new Location(new Coordinate(-95.77, 35.99), new Coordinate(-89.77, 40.99));
+	    
+	    endpoint.locations(Lists.newArrayList(missouri));
+	    
 	    Authentication auth = new OAuth1(
 	    		System.getProperty("API_KEY").toString(), 
 	    		System.getProperty("API_SECRET_KEY").toString(), 
@@ -83,7 +89,7 @@ public class TweetReader {
 	    client.connect();
 
 	    // Do whatever needs to be done with messages
-	    for (int msgRead = 0; msgRead < 100; msgRead++) {
+	    for (int msgRead = 0; msgRead < 25; msgRead++) {
 			String msg = queue.take();
 			try {
 				for (LoggableTweet loggableTweet : loggableTweeters) {
